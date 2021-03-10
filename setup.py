@@ -12,7 +12,7 @@ except FileNotFoundError:
 
 
 setup(
-    name='foliantcontrib.slugs',
+    name='foliantcontrib.yaml_include',
     description=SHORT_DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
