@@ -1,3 +1,5 @@
+[![](https://img.shields.io/pypi/v/foliantcontrib.yaml_include.svg)](https://pypi.org/project/foliantcontrib.yaml_include/)  [![](https://img.shields.io/github/v/tag/foliant-docs/foliantcontrib.yaml_include.svg?label=GitHub)](https://github.com/foliant-docs/foliantcontrib.yaml_include)
+
 # YAMLInclude Extension
 
 YAMLInclude is a configuration extension for Foliant to include parts of configuration from YAML-files.
