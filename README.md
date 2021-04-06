@@ -9,7 +9,7 @@ It resolves `!include` YAML tags in the project config and inside XML-tags param
 ## Installation
 
 ```bash
-$ pip install foliantcontrib.include
+$ pip install foliantcontrib.yaml_include
 ```
 
 ## Usage
