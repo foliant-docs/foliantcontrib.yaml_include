@@ -13,8 +13,13 @@ class Parser(BaseParser):
 
         add_constructor('!include', self._resolve_include_tag)
 
+        self.logger = self.logger.getChild('yaml_include')
+        self.logger.debug(f'Extension inited: {self.__dict__}')
+
     def _resolve_include_tag(self, _, node) -> str:
         '''Replace value after ``!include`` with the content of the referenced file.'''
+
+        self.logger.debug('Start resolving !include tag')
 
         parts = node.value.split('#')
 
@@ -40,9 +45,11 @@ class Parser(BaseParser):
 
         link_pattern = re.compile(r'https?://\S+')
         if link_pattern.search(path_):  # path_ is a URL
+            self.logger.debug(f'Getting included content from the link {path_}')
             result = urlopen(path_).read()
         else:
-            with open(self.project_path / Path(path_).expanduser(),
-                      encoding='utf8') as f:
+            included_file_path = self.project_path / Path(path_).expanduser()
+            self.logger.debug(f'Getting included content from the file {included_file_path}')
+            with open(included_file_path, encoding='utf8') as f:
                 result = f.read()
         return result

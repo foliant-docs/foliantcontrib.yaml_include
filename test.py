@@ -5,7 +5,7 @@ from foliant_test.config_extension import ConfigExtensionTestFramework
 
 class TestInclude(TestCase):
     def setUp(self):
-        self.ctf = ConfigExtensionTestFramework('yaml_include')
+        self.ctf = ConfigExtensionTestFramework('include')
 
     def test_include_simple(self):
         source = 'param: !include part.yml'
@@ -17,7 +17,7 @@ class TestInclude(TestCase):
         }
         self.ctf.config_path = self.ctf.config_path.resolve()
 
-        with patch("foliant.config.yaml_include.open", mock_open(read_data=part_yml)):
+        with patch("foliant.config.include.open", mock_open(read_data=part_yml)):
             self.ctf.test_extension(input_config=source, expected_config=expected, keep=True)
 
     def test_include_get(self):
@@ -28,7 +28,7 @@ class TestInclude(TestCase):
         }
         self.ctf.config_path = self.ctf.config_path.resolve()
 
-        with patch("foliant.config.yaml_include.open", mock_open(read_data=part_yml)):
+        with patch("foliant.config.include.open", mock_open(read_data=part_yml)):
             self.ctf.test_extension(input_config=source, expected_config=expected, keep=True)
 
     def test_include_remote(self):
@@ -41,7 +41,7 @@ class TestInclude(TestCase):
         }
         self.ctf.config_path = self.ctf.config_path.resolve()
 
-        with patch('foliant.config.yaml_include.urlopen') as mock_urlopen:
+        with patch('foliant.config.include.urlopen') as mock_urlopen:
             mock_read = Mock()
             mock_read.read.return_value = part_yml
             mock_urlopen.return_value = mock_read
@@ -55,7 +55,7 @@ class TestInclude(TestCase):
         }
         self.ctf.config_path = self.ctf.config_path.resolve()
 
-        with patch('foliant.config.yaml_include.urlopen') as mock_urlopen:
+        with patch('foliant.config.include.urlopen') as mock_urlopen:
             mock_read = Mock()
             mock_read.read.return_value = part_yml
             mock_urlopen.return_value = mock_read

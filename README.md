@@ -4,7 +4,7 @@
 
 YAMLInclude is a configuration extension for Foliant to include parts of configuration from YAML-files.
 
-It resolves `!include` YAML tags in the project config and inside XML-tags parameters.
+It resolves `!include` YAML tag in the project config and inside XML-tags parameters.
 
 ## Installation
 
@@ -115,7 +115,7 @@ chapters:
 Config example:
 
 ```yaml
-chapters: !include chapters.yml#chapters_for_pdf
+chapters: !include http://example.com/chapters.yml#chapters_for_pdf
 ```
 
 In this example the `chapters.yml` file is stored on the website `http://example.com/`.
